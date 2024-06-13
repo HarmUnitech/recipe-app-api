@@ -1,5 +1,5 @@
 """
-Test for models.
+Tests for models.
 """
 from django.test import TestCase
 from django.contrib.auth import get_user_model
@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 class ModelTests(TestCase):
     """Test models."""
 
-    def test_create_user_with_email_success(self):
+    def test_create_user_with_email_successful(self):
         """Test creating a user with an email is successful."""
         email = 'test@example.com'
         password = 'testpass123'
@@ -23,12 +23,11 @@ class ModelTests(TestCase):
     def test_new_user_email_normalized(self):
         """Test email is normalized for new users."""
         sample_emails = [
-            ['test1@EXAMPLE.COM', 'test1@example.com'],
+            ['test1@EXAMPLE.com', 'test1@example.com'],
             ['Test2@Example.com', 'Test2@example.com'],
-            ['TEST3@EXAMPLE.COM', 'TEST3@example.com'],
+            ['TEST3@EXAMPLE.com', 'TEST3@example.com'],
             ['test4@example.COM', 'test4@example.com'],
         ]
-
         for email, expected in sample_emails:
             user = get_user_model().objects.create_user(email, 'sample123')
             self.assertEqual(user.email, expected)
@@ -39,7 +38,7 @@ class ModelTests(TestCase):
             get_user_model().objects.create_user('', 'test123')
 
     def test_create_superuser(self):
-        """Terst create a superuser."""
+        """Test creating a superuser."""
         user = get_user_model().objects.create_superuser(
             'test@example.com',
             'test123',
