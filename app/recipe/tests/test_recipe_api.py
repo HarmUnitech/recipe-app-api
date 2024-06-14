@@ -126,9 +126,7 @@ class PrivateRecipeAPITests(TestCase):
             link=original_link,
         )
 
-        payload= {
-            'title': 'New recipe title',
-        }
+        payload = {'title': 'New recipe title'}
         url = detail_url(recipe.id)
         res = self.client.patch(url, payload)
 
