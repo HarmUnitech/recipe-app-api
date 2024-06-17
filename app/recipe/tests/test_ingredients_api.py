@@ -12,9 +12,7 @@ from core.models import Ingredient
 
 from recipe.serializers import IngredientSerializer
 
-
 INGREDIENTS_URL  = reverse('recipe:ingredient-list')
-
 
 def detail_url(ingredient_id):
     """Create and return an ingredient detail URL."""
