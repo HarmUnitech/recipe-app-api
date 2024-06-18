@@ -46,7 +46,7 @@ def create_recipe(user, **params):
         'time_minutes': 22,
         'price': Decimal('5.25'),
         'description': 'Sample description',
-        'link': 'http://example.com/recipe.pdf'
+        'link': 'http://example.com/recipe.pdf',
     }
     defaults.update(params)
 
@@ -282,7 +282,7 @@ class PrivateRecipeApiTests(TestCase):
 
     def test_clear_recipe_tags(self):
         """Test clearing a recipes tags."""
-        tag = Tag.objects.create(user=self.user, name='Desert')
+        tag = Tag.objects.create(user=self.user, name='Dessert')
         recipe = create_recipe(user=self.user)
         recipe.tags.add(tag)
 
@@ -439,7 +439,7 @@ class ImageUploadTests(TestCase):
         """Test uploading an image to a recipe."""
         url = image_upload_url(self.recipe.id)
         with tempfile.NamedTemporaryFile(suffix='.jpg') as image_file:
-            img = Image.new('RGB', (10,10))
+            img = Image.new('RGB', (10, 10))
             img.save(image_file, format='JPEG')
             image_file.seek(0)
             payload = {'image': image_file}
