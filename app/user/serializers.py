@@ -1,5 +1,5 @@
 """
-Serializers for the user api view.
+Serializers for the user API view.
 """
 from django.contrib.auth import (
     get_user_model,
@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
         return get_user_model().objects.create_user(**validated_data)
 
     def update(self, instance, validated_data):
-        """Update and return."""
+        """Update and return user."""
         password = validated_data.pop('password', None)
         user = super().update(instance, validated_data)
 
